@@ -19,7 +19,23 @@ Dokumentasi dari projek ini menyusul ya seiring berjalannya waktu. Semua dokumen
 Tidak ada yang berubah, hanya saja menambahkan folder baru untuk menyimpan `assets` dan `docs` untuk kumpulan dokumentasi projek.
 
 # Install
-Silahkan clone repo ini. Aktifkan XAMPP/LAMPP/MAMPP/atau sejenisnya, done.
+
+### Add table
+Pertama tambahkan tabel ini ke dalam database kalian.
+
+```sql
+CREATE TABLE `oppia`.`user` ( `id` INT(11) NOT NULL AUTO_INCREMENT , `fullname` VARCHAR(250) NOT NULL , `email` VARCHAR(250) NOT NULL , `password` VARCHAR(250) NOT NULL , `is_delete` BOOLEAN NOT NULL , `date` TIMESTAMP NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+```
+
+### Clone
+Silahkan clone repo ini
+
+```
+$ git clone https://github.com/sahmura/laraci.git nama-projek
+```
+
+### Set Up
+Atur database dan config di file `application/config/database.php` dan `application/config/config.php`
 
 # Pengembangan
 Bagi yang ingin mengembangkan, silahkan. KIta bersama-sama mengembangkan Codeigniter Template ini supaya memudahkan para developer dalam membangun sebuah web. Aku yakin akan berguna suatu saat, hehehe.
