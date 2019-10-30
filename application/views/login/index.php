@@ -45,7 +45,7 @@
                         <a href="<?php echo base_url('register'); ?>" class="text-info">Create New Account?</a>
                     </div>
                     <div class="col-6">
-                        <a href="<?php echo base_url('forgotpassword'); ?>" class="text-info">Forgot Password?</a>
+                        <a href="<?php echo base_url('forget'); ?>" class="text-info">Forgot Password?</a>
                     </div>
                 </div>
             </div>

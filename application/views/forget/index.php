@@ -22,36 +22,25 @@
                     </div>
                 <?php } ?>
 
-
-                <h6 class="text-secondary">Register for New Account</h6>
+                <h6 class="text-secondary">Reset your Password</h6>
                 <hr>
                 <form action="#" method="post">
                     <div class="form-group">
-                        <label for="register-fullname" class="text-secondary">Fullname</label>
-                        <input type="text" name="register-fullname" id="register-fullname" class="form-control" placeholder="Your Name">
-                        <?php echo "<span class='text-danger'>" . form_error('register-fullname') . "</span>"; ?>
+                        <label for="forget-email" class="text-secondary">Email</label>
+                        <input type="email" name="forget-email" id="forget-email" class="form-control" placeholder="your@email.com">
+                        <?php echo "<span class='text-danger'>" . form_error('forget-email') . "</span>"; ?>
                     </div>
                     <div class="form-group">
-                        <label for="register-email" class="text-secondary">Email</label>
-                        <input type="email" name="register-email" id="register-email" class="form-control" placeholder="your@email.com">
-                        <?php echo "<span class='text-danger'>" . form_error('register-email') . "</span>"; ?>
-                    </div>
-                    <div class="form-group">
-                        <label for="register-password" class="text-secondary">Password</label>
-                        <input type="password" name="register-password" id="register-password" class="form-control" placeholder="password">
-                        <?php echo "<span class='text-danger'>" . form_error('register-password') . "</span>"; ?>
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-info w-100" type="submit">Register New Account</button>
+                        <button class="btn btn-info w-100" type="submit">Reset Password</button>
                     </div>
                 </form>
 
                 <div class="row text-center">
                     <div class="col-6">
-                        <a href="<?php echo base_url('login'); ?>" class="text-info">Have an Account?</a>
+                        <a href="<?php echo base_url('register'); ?>" class="text-info">Create New Account?</a>
                     </div>
                     <div class="col-6">
-                        <a href="<?php echo base_url('forget'); ?>" class="text-info">Forgot Password?</a>
+                        <a href="<?php echo base_url('login'); ?>" class="text-info">Login</a>
                     </div>
                 </div>
             </div>
