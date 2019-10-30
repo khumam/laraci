@@ -24,7 +24,9 @@ Tidak ada yang berubah, hanya saja menambahkan folder baru untuk menyimpan `asse
 Pertama tambahkan tabel ini ke dalam database kalian.
 
 ```sql
-CREATE TABLE `namatabel`.`user` ( `id` INT(11) NOT NULL AUTO_INCREMENT , `fullname` VARCHAR(250) NOT NULL , `email` VARCHAR(250) NOT NULL , `password` VARCHAR(250) NOT NULL , `is_delete` BOOLEAN NOT NULL , `date` TIMESTAMP NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+CREATE TABLE `namatabel`.`user` ( `id_user` INT(11) NOT NULL AUTO_INCREMENT , `fullname` VARCHAR(250) NOT NULL , `email` VARCHAR(250) NOT NULL , `password` VARCHAR(250) NOT NULL , `is_delete` BOOLEAN NOT NULL , `date` TIMESTAMP NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+CREATE TABLE `namatabel`.`admin` ( `id_admin` INT(11) NOT NULL AUTO_INCREMENT , `fullname` VARCHAR(250) NOT NULL , `email` VARCHAR(250) NOT NULL , `password` VARCHAR(250) NOT NULL , `is_delete` BOOLEAN NOT NULL , `date` TIMESTAMP NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 ```
 
 ### Clone
