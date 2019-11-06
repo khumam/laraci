@@ -27,12 +27,25 @@ class Laraci extends CI_Controller
     {
         $result = "Beberapa perintah yang dapat digunakan\n\n";
         $result .= "php index.php laraci migration \"file_name\"         Create new migration file\n";
+        $result .= "php index.php laraci migration \"user\"              Create new User migration file\n";
+        $result .= "php index.php laraci migration \"admin\"              Create new Admin migration file\n";
         $result .= "php index.php laraci migrate [\"version_number\"]    Run all migrations. The version number is optional.\n";
-        $result .= "php index.php laraci seeder \"file_name\"            Creates a new seed file.\n";
-        $result .= "php index.php laraci seed \"file_name\"              Run the specified seed file.\n";
+        // $result .= "php index.php laraci seeder \"file_name\"            Creates a new seed file.\n";
+        // $result .= "php index.php laraci seed \"file_name\"              Run the specified seed file.\n";
         $result .= "php index.php laraci controller \"file_name\"        Create new Controller.\n";
+        $result .= "php index.php laraci model \"file_name\"        Create new Controller.\n";
 
         echo $result . PHP_EOL;
+    }
+
+    public function controller($name)
+    {
+        $this->make_controller($name);
+    }
+
+    public function model($name)
+    {
+        $this->make_model($name);
     }
 
     public function migration($name)
@@ -110,9 +123,7 @@ class Migration_$name extends CI_Migration {
 }";
 
         fwrite($my_migration, $migration_template);
-
         fclose($my_migration);
-
         echo "$path migration has successfully been created." . PHP_EOL;
     }
 
@@ -125,53 +136,56 @@ class Migration_$name extends CI_Migration {
 
         $migration_template = "<?php
 
-        class Migration_Admin extends CI_Migration {
-            public function up() {
+class Migration_Admin extends CI_Migration
+{
+    public function up()
+    {
 
-                // Bisa ditambah jika diperlukan 
+        // Bisa ditambah jika diperlukan 
 
-                \$data = [
-                    'id_admin' => [
-                        'type' => 'INT',
-                        'constraint' => 11,
-                        'unsigned' => true,
-                        'auto_increment' => true,
-                    ],
-                    'fullname' => [
-                        'type' => 'VARCHAR',
-                        'constraint' => 250,
-                        'null' => false,
-                    ],
-                    'email' => [
-                        'type' => 'VARCHAR',
-                        'constraint' => 250,
-                        'null' => false,
-                    ],
-                    'password' => [
-                        'type' => 'VARCHAR',
-                        'constraint' => 250,
-                        'null' => false,
-                    ],
-                    'is_delete' => [
-                        'type' => 'BOOLEAN',
-                        'null' => true,
-                    ],
-                    'date' => [
-                        'type' => 'TIMESTAMP',
-                        'null' => false,
-                    ],
-                ];
+        \$data = [
+            'id_admin' => [
+                'type' => 'INT',
+                'constraint' => 11,
+                'unsigned' => true,
+                'auto_increment' => true,
+            ],
+            'fullname' => [
+                'type' => 'VARCHAR',
+                'constraint' => 250,
+                'null' => false,
+            ],
+            'email' => [
+                'type' => 'VARCHAR',
+                'constraint' => 250,
+                'null' => false,
+            ],
+            'password' => [
+                'type' => 'VARCHAR',
+                'constraint' => 250,
+                'null' => false,
+            ],
+            'is_delete' => [
+                'type' => 'BOOLEAN',
+                'null' => true,
+            ],
+            'date' => [
+                'type' => 'TIMESTAMP',
+                'null' => false,
+            ],
+        ];
 
-                \$this->dbforge->add_field(\$data);
-                \$this->dbforge->add_key('id_admin', TRUE);
-                \$this->dbforge->create_table('admin');
-            }
+        \$this->dbforge->add_field(\$data);
+        \$this->dbforge->add_key('id_admin', TRUE);
+        \$this->dbforge->create_table('admin');
+    }
 
-            public function down()
-            {
-                \$this->dbforge->drop_table('admin');
-            }
-        }";
+    public function down()
+    {
+        \$this->dbforge->drop_table('admin');
+    }
+}
+";
 
         fwrite($my_migration, $migration_template);
         fclose($my_migration);
@@ -187,57 +201,122 @@ class Migration_$name extends CI_Migration {
 
         $migration_template = "<?php
 
-        class Migration_User extends CI_Migration {
-            public function up() {
+class Migration_User extends CI_Migration
+{
+    public function up()
+    {
 
-                // Bisa ditambah jika diperlukan 
+        // Bisa ditambah jika diperlukan 
 
-                \$data = [
-                    'id_user' => [
-                        'type' => 'INT',
-                        'constraint' => 11,
-                        'unsigned' => true,
-                        'auto_increment' => true,
-                    ],
-                    'fullname' => [
-                        'type' => 'VARCHAR',
-                        'constraint' => 250,
-                        'null' => false,
-                    ],
-                    'email' => [
-                        'type' => 'VARCHAR',
-                        'constraint' => 250,
-                        'null' => false,
-                    ],
-                    'password' => [
-                        'type' => 'VARCHAR',
-                        'constraint' => 250,
-                        'null' => false,
-                    ],
-                    'is_delete' => [
-                        'type' => 'BOOLEAN',
-                        'null' => true,
-                    ],
-                    'date' => [
-                        'type' => 'TIMESTAMP',
-                        'null' => false,
-                    ],
-                ];
+        \$data = [
+            'id_user' => [
+                'type' => 'INT',
+                'constraint' => 11,
+                'unsigned' => true,
+                'auto_increment' => true,
+            ],
+            'fullname' => [
+                'type' => 'VARCHAR',
+                'constraint' => 250,
+                'null' => false,
+            ],
+            'email' => [
+                'type' => 'VARCHAR',
+                'constraint' => 250,
+                'null' => false,
+            ],
+            'password' => [
+                'type' => 'VARCHAR',
+                'constraint' => 250,
+                'null' => false,
+            ],
+            'is_delete' => [
+                'type' => 'BOOLEAN',
+                'null' => true,
+            ],
+            'date' => [
+                'type' => 'TIMESTAMP',
+                'null' => false,
+            ],
+        ];
 
-                \$this->dbforge->add_field(\$data);
-                \$this->dbforge->add_key('id_user', TRUE);
-                \$this->dbforge->create_table('user');
-            }
+        \$this->dbforge->add_field(\$data);
+        \$this->dbforge->add_key('id_user', TRUE);
+        \$this->dbforge->create_table('user');
+    }
 
-            public function down()
-            {
-                \$this->dbforge->drop_table('user');
-            }
-        }";
+    public function down()
+    {
+        \$this->dbforge->drop_table('user');
+    }
+}
+";
 
         fwrite($my_migration, $migration_template);
         fclose($my_migration);
         echo "$path migration has successfully been created." . PHP_EOL;
+    }
+
+    protected function make_controller($nama)
+    {
+        $nama = strtolower($nama);
+        $controller_name = ucfirst($nama);
+        $path = APPPATH . "controllers/$controller_name.php";
+
+        if (file_exists($path)) {
+            echo "File controller sudah tersedia\n";
+        } else {
+            $my_controller = fopen($path, "w") or die("Unable to create controller file!");
+
+            $controller_template = "<?php
+class $controller_name extends CI_Controller
+{
+    public function __construct()
+    {
+        parrent::__construct();
+        //Silahkan isi dengan modul yang akan diaktifkan pertama kali
+    }
+
+    public function index()
+    {
+
+        //Index dari controller $controller_name
+
+    }
+}";
+
+            fwrite($my_controller, $controller_template);
+            fclose($my_controller);
+            echo "$path controller sukses dibuat." . PHP_EOL;
+        }
+    }
+
+    protected function make_model($nama)
+    {
+        $nama = strtolower($nama);
+        $models_name = ucfirst($nama);
+        $path = APPPATH . "models/$models_name.php";
+
+        if (file_exists($path)) {
+            echo "File models sudah tersedia\n";
+        } else {
+            $my_models = fopen($path, "w") or die("Unable to create models file!");
+
+            $models_template = "<?php
+class $models_name extends CI_Model
+{
+    public function method()
+    {
+
+        //method dari model $models_name
+
+    }
+}";
+
+            fwrite($my_models, $models_template);
+            fclose($my_models);
+            echo "$path model sukses dibuat." . PHP_EOL;
+        }
     }
 
     protected function make_seed_file($name)
