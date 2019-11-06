@@ -32,6 +32,13 @@ Done
 ### Set Up
 Atur database dan config di file `application/config/database.php` dan `application/config/config.php`
 
+### Optional
+Jika tidak bisa menggunakan mode cli, silahkan install faker terlebih dahulu
+
+```
+composer require fzaninotto/faker
+```
+
 # Pengembangan
 Bagi yang ingin mengembangkan, silahkan. KIta bersama-sama mengembangkan Codeigniter Template ini supaya memudahkan para developer dalam membangun sebuah web. Aku yakin akan berguna suatu saat, hehehe.
 
