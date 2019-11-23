@@ -105,4 +105,39 @@ class Crud_model extends CI_Model
         $update = $this->db->update($table, $data);
         return $update ? true : false;
     }
+
+    /*
+    
+    Ini adalah fungsi untuk join data
+
+    @parameter
+    $select (string) untuk menyeleksi apa saja data yang akan diambil
+    $table1 (string) nama tabel pertama yang akan dijoin
+    $table2 (strung) nama tabel kedua yang akan dijoin
+    $identifier (string) identifikasi apa saja yang dapat memenuhi untuk pengambilan data
+    $type (string: both, left, right) untuk menentukan jenis join apa yang akan digunakan
+
+    @return
+    Akan mengembalikan array berupa data jika ada datanya dan false jika ada kesalahan
+
+    */
+
+    public function joinData($select, $table1, $table2, $identifier, $type)
+    {
+        if ($select != null) {
+            $this->db->select('*');
+        }
+
+        $this->db->from($table1);
+
+        if ($type == null) {
+            $this->db->join($table2, $identifier);
+        } else if ($type != null) {
+            $this->db->join($table2, $identifier, $type);
+        }
+
+        $query = $this->db->get();
+
+        return $query ? $query : false;
+    }
 }
